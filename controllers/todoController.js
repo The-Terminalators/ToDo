@@ -23,7 +23,7 @@ function create(req,res){
 
 // destroy action
 function destroy(req,res){
-  Todo.remove( {entry: req.params.entry} ,function(err){
+  Todo.remove( { _id : req.params.id } ,function(err){
     if(err) throw err;
     res.json({success: true, message: "Item deleted!"})
   });
