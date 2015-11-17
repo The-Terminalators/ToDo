@@ -17,6 +17,20 @@ function create(req,res){
 
   todo.save(function(err){
     if(err) throw err;
-    res.json({success: true, message: "User saved!"})
+    res.json({success: true, message: "List saved!"})
   });
 };
+
+// destroy action
+function destroy(req,res){
+  Todo.remove({},function(err){
+    if(err) throw err;
+    res.json({success: true, message: "List deleted!"})
+  });
+};
+
+module.exports = {
+  index: index,
+  create: create,
+  destroy: destroy
+}
