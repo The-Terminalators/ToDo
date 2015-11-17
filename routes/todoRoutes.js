@@ -1,4 +1,6 @@
 var todoRouter = require('express').Router();
-var todoController = null // will update later
+var todoController = require('../controllers/todoController.js');
 
-module.exports = todoController;
+todoRouter.route('/todos').get(todoController.allTodos);
+
+module.exports = todoRouter;

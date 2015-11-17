@@ -4,7 +4,7 @@ var express = require('express');
 var mongoose = require('mongoose');
 var logger = require('morgan');
 var bodyParser = require('body-parser');
-var routes = null;
+var todoRoutes = require('./routes/todoRoutes.js');
 
 var port = process.env.PORT || 3000;
 
@@ -15,5 +15,6 @@ app.use(express.static('public'));
 
 mongoose.connect('mongodb://master:qwerty1234@ds055584.mongolab.com:55584/todosdb');
 
+app.use('/api', todoRoutes);
 
 app.listen(port);

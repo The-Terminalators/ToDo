@@ -1,5 +1,4 @@
-var Todo = require('..models/todos.js');
-
+var Todo = require('../models/todos.js');
 
 // index action
 function index(req,res){
@@ -9,6 +8,7 @@ function index(req,res){
   });
 };
 
+/*
 // create action
 function create(req,res){
   var todo = new Todo
@@ -17,7 +17,7 @@ function create(req,res){
 
   todo.save(function(err){
     if(err) throw err;
-    res.json({success: true, message: "List saved!"})
+    res.json({success: true, message: "Item saved!"})
   });
 };
 
@@ -25,12 +25,10 @@ function create(req,res){
 function destroy(req,res){
   Todo.remove({},function(err){
     if(err) throw err;
-    res.json({success: true, message: "List deleted!"})
+    res.json({success: true, message: "Item deleted!"})
   });
 };
 
-module.exports = {
-  index: index,
-  create: create,
-  destroy: destroy
-}
+*/
+
+module.exports = { allTodos: index }
