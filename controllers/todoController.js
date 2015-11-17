@@ -11,5 +11,12 @@ function index(req,res){
 
 // create action
 function create(req,res){
-  var todo
-}
+  var todo = new Todo
+  todo.body = req.body.body
+  todo.done = req.body.done
+
+  todo.save(function(err){
+    if(err) throw err;
+    res.json({success: true, message: "User saved!"})
+  });
+};
