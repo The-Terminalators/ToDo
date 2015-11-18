@@ -22,29 +22,17 @@ function strikethrough(){
 $checkboxes.click(strikethrough);
 
 $('.btn').click(function(){
+
+  event.preventDefault();
+  
   text = $('#todo')
   $('.list').last().append('<p><input type="checkbox" class="checkboxes"><i class="glyphicon glyphicon-star"></i><span>'+ text.val() +'</span><i class="glyphicon glyphicon-remove"></i></p>');
-  text.val('');
-  $('p').last().hide();
-  $('p').last().show('slow');
-  event.preventDefault();
-  $exes = $('.glyphicon-remove')
-  $star = $('.glyphicon-star')
-  $checkboxes = $('.checkboxes')
-  $span = $('span')
-  $paras = $('p')
-  $exes.click(removeDiv);
-  $stars.click(colorStar);
-  $checkboxes.click(strikethrough);
-});
 
-/*ADD BUTTON*/
-$('#add-entry').on('click', function(evt){
 
-  var value = $('.form-input').val();
+  var value = text.val();
 
   $.ajax({
-    url: '/api/todos',
+    url: 'api/todos',
     method: 'POST',
     data: {
       entry: value,
@@ -55,4 +43,18 @@ $('#add-entry').on('click', function(evt){
       console.log(data)
     }
   });
+
+
+
+  text.val('');
+  $('p').last().hide();
+  $('p').last().show('slow');
+  $exes = $('.glyphicon-remove')
+  $star = $('.glyphicon-star')
+  $checkboxes = $('.checkboxes')
+  $span = $('span')
+  $paras = $('p')
+  $exes.click(removeDiv);
+  $stars.click(colorStar);
+  $checkboxes.click(strikethrough);
 });
