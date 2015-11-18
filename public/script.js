@@ -63,4 +63,5 @@ $('.btn').click(function(){
   $stars.click(colorStar);
   $checkboxes.click(strikethrough);
 
+
 });
