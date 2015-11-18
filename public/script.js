@@ -19,15 +19,41 @@ $stars.click(colorStar);
 function strikethrough(){
   $(this).next().next().toggleClass('strikethrough');
 }
+
 $checkboxes.click(strikethrough);
 
+
+
+
+/*THIS IS THE ADD BUTTON WE USE AJAX HERE*/
 $('.btn').click(function(){
-  text = $('#todo')
+
+  event.preventDefault();
+
+  text = $('#todo');
+  var value = text.val();
+
   $('.list').last().append('<p><input type="checkbox" class="checkboxes"><i class="glyphicon glyphicon-star"></i><span>'+ text.val() +'</span><i class="glyphicon glyphicon-remove"></i></p>');
+
+  /********************/
+  //console.log(value)
+  $.ajax({
+    url: 'api/todos',
+    method: 'POST',
+    data: {
+     entry: value,
+     done: false
+     },
+     success: function(data){
+       console.log(data);
+     },
+     dataType: 'json'
+   });
+   /**********************/
+
   text.val('');
   $('p').last().hide();
   $('p').last().show('slow');
-  event.preventDefault();
   $exes = $('.glyphicon-remove')
   $star = $('.glyphicon-star')
   $checkboxes = $('.checkboxes')
@@ -36,23 +62,5 @@ $('.btn').click(function(){
   $exes.click(removeDiv);
   $stars.click(colorStar);
   $checkboxes.click(strikethrough);
-});
 
-/*ADD BUTTON*/
-$('#add-entry').on('click', function(evt){
-
-  var value = $('.form-input').val();
-
-  $.ajax({
-    url: '/api/todos',
-    method: 'POST',
-    data: {
-      entry: value,
-      done: false
-    },
-    dataType: 'application/json',
-    success: function(data){
-      console.log(data)
-    }
-  });
 });
