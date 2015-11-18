@@ -6,8 +6,19 @@ var logger = require('morgan');
 var bodyParser = require('body-parser');
 var todoRoutes = require('./routes/todoRoutes.js');
 
+var ejs = require('ejs');
+var ejsLayouts = require('express-ejs-layouts');
+
 var port = process.env.PORT || 3000;
 
+/*
+app.use('ejsLayouts');
+app.use('/assets', express.static(__dirname + '/assets'));
+app.use (function(req,res,next){
+	console.log("A request has been made");
+	next();
+});
+*/
 
 app.use(logger('dev'));
 app.use(bodyParser.json());

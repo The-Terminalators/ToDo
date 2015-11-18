@@ -1,7 +1,3 @@
-
-
-
-
 console.log("Script Started");
 var $exes = $('.glyphicon-remove')
 var $stars = $('.glyphicon-star')
@@ -40,4 +36,23 @@ $('.btn').click(function(){
   $exes.click(removeDiv);
   $stars.click(colorStar);
   $checkboxes.click(strikethrough);
-})
+});
+
+/*ADD BUTTON*/
+$('#add-entry').on('click', function(evt){
+
+  var value = $('.form-input').val();
+
+  $.ajax({
+    url: '/api/todos',
+    method: 'POST',
+    data: {
+      entry: value,
+      done: false
+    },
+    dataType: 'application/json',
+    success: function(data){
+      console.log(data)
+    }
+  });
+});
