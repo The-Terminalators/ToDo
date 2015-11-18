@@ -3,7 +3,7 @@ var Todo = require('../models/todos.js');
 // index action
 function index(req,res){
   Todo.find({}, function(err,todos){
-    if(err) throw err;
+    if(err) console.log(err);
     res.json(todos);
   });
 };
@@ -16,7 +16,7 @@ function create(req,res){
   todo.done  = req.body.done;
 
   todo.save(function(err){
-    if(err) throw err;
+    if(err) console.log(err);
     res.json({success: true, message: "Item saved!"})
   });
 };
@@ -24,7 +24,7 @@ function create(req,res){
 // destroy action
 function destroy(req,res){
   Todo.remove( { _id : req.params.id } ,function(err){
-    if(err) throw err;
+    if(err) console.log(err);
     res.json({success: true, message: "Item deleted!"})
   });
 };
