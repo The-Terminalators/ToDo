@@ -22,7 +22,7 @@ function removeDiv() {
     },
     error: function(err) {
       console.log(err);
-    } 
+    }
    });
 }
 
@@ -76,7 +76,6 @@ $('.btn').click(function(){
   text = $('#todo');
   var value = text.val();
 
-  $('.list').last().append('<p><input type="checkbox" class="checkboxes"><i class="glyphicon glyphicon-star"></i><span>'+ text.val() +'</span><i class="glyphicon glyphicon-remove"></i></p>');
 
   /********************/
   //console.log(value)
@@ -89,23 +88,26 @@ $('.btn').click(function(){
      },
      success: function(data){
        console.log(data);
+       $('.list').last().append('<p id="' +data._id+ '"><input type="checkbox" class="checkboxes"><i class="glyphicon glyphicon-star"></i><span>'+ text.val() +'</span><i class="glyphicon glyphicon-remove"></i></p>');
+       text.val('');
+       $('p').last().hide();
+       $('p').last().show('slow');
+       $exes = $('.glyphicon-remove')
+       $star = $('.glyphicon-star')
+       $checkboxes = $('.checkboxes')
+       $span = $('span')
+       $paras = $('p')
+       $exes.click(removeDiv);
+       $stars.click(colorStar);
+       $checkboxes.click(strikethrough);
+
+
+
      },
      dataType: 'json'
    });
    /**********************/
 
-  text.val('');
-
-  $('p').last().hide();
-  $('p').last().show('slow');
-  $exes = $('.glyphicon-remove')
-  $star = $('.glyphicon-star')
-  $checkboxes = $('.checkboxes')
-  $span = $('span')
-  $paras = $('p')
-  $exes.click(removeDiv);
-  $stars.click(colorStar);
-  $checkboxes.click(strikethrough);
 
 
 });

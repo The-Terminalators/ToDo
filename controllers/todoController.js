@@ -17,7 +17,7 @@ function create(req,res){
 
   todo.save(function(err){
     if(err) console.log(err);
-    res.json({success: true, message: "Item saved!"})
+    res.json({success: true, message: "Item saved!", _id: todo._id})
   });
 };
 
